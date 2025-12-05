@@ -18,7 +18,7 @@ To connect from windbg, you can enter `gdb:port=1234,server=localhost` into the 
 windbgx -premote gdb:port=1234,server=localhost "\/app/fib"
 ```
 
-Note that due to some weirdness in the WinDbg command line parser (my fault actually), you can't start an executable path with a `/` character. You can work around this by starting the path with a `\/` which ends up getting ignored by gdbserver. To set up source path automatically, you cn use:
+Note that due to some weirdness in the WinDbg command line parser (my fault actually), you can't start an executable path with a `/` character. You can work around this by starting the path with a `\/` which ends up getting ignored by gdbserver. To set up source path automatically, you can use:
 
 ```powershell
 windbgx -premote gdb:port=1234,server=localhost -srcpath $pwd "\/app/fib"
