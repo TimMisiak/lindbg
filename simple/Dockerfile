@@ -11,7 +11,7 @@ RUN apt-get update && \
 COPY fib.c .
 
 # Build unoptimized with debug symbols
-RUN gcc -O0 -g -o fib fib.c
+RUN gcc -O0 -g -o fib fib.c -Wl,--build-id
 
 # Expose gdbserver port
 EXPOSE 1234
