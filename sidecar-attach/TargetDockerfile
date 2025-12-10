@@ -1,0 +1,27 @@
+# ---- Build stage ----
+FROM ubuntu:22.04 AS builder
+
+# Install build tools
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+ && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+# Copy source
+COPY fib.c .
+
+# Build unoptimized with debug symbols
+RUN gcc -O0 -g -o fib fib.c -Wl,--build-id
+
+
+# ---- Runtime stage ----
+FROM ubuntu:22.04
+
+WORKDIR /app
+
+# Copy binary from builder stage
+COPY --from=builder /app/fib .
+
+# Run the fib process
+CMD ["/app/fib"]

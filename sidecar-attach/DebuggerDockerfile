@@ -1,0 +1,14 @@
+FROM ubuntu:22.04
+RUN apt-get update && apt-get install -y gdbserver && apt-get clean
+
+RUN mkdir /app
+
+WORKDIR /dbg
+
+# Expose gdbserver port
+EXPOSE 1234
+
+COPY entrypoint.sh .
+RUN chmod +x /dbg/entrypoint.sh
+
+CMD ["/dbg/entrypoint.sh"]
