@@ -9,7 +9,7 @@ docker build -t simple-attach .
 To run the container:
 
 ```
-docker run -it --rm -p 1234:1234 --name simple-attach --cap-add=SYS_PTRACE simple-attach
+docker run -it --rm -p 1234:1234 --cap-add=SYS_PTRACE --name simple-attach simple-attach
 ```
 
 Note the presence of `--cap-add=SYS_PTRACE` which is needed to allow attaching to running processes.

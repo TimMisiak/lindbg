@@ -9,7 +9,7 @@ docker build -t simple-debug .
 To run the container:
 
 ```
-docker run -it --rm -p 1234:1234 simple-debug
+docker run -it --rm -p 1234:1234 --name simple-debug simple-debug
 ```
 
 To connect from windbg, you can enter `gdb:port=1234,server=localhost` into the "Connect to process server" dialog, or run windbg from the command line:
